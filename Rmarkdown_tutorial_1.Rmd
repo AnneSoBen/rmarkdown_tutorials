@@ -1,0 +1,135 @@
+---
+title: "R Markdown tutorial 1"
+author: "The EDB RMarkdown superstar learning team"
+date: "01/03/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#That is a setup chunk of code, we will come back to it later
+```
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For further help see <http://rmarkdown.rstudio.com>.
+
+# Header level 1: R Markdown tutorial 1: Basics
+As you can observe first level headers are simply produced with a # 
+
+## Header level 2: R Markdown
+Second level headers are simply produced with two ## and so on 
+
+### Markdown Headers
+We just saw how it works, 1#, 2#, 3#
+
+### Markdown italics and bold
+Use an asterisk `*` mark before and after a word to *italicize* it 
+Use two asterisk marks `**` before and after a word to make it **bold**
+
+### Markdown lists
+A list can simply be produced using the `-` symbol. <br/>
+Lets list what we have already described <br/>
+
+- headers
+- *italics* or _italics_
+- **bold** or __bold__
+- lists
+
+it also works with numbers
+
+1. headers
+2. *italics* or _italics_
+3. **bold** or __bold__
+4. lists
+
+Lets now list what we could be describing
+
+- begin a new paragraph <br/>
+- [links](rmarkdown.rstudio.com)
+- Latex equations, $E = mc^{2}$
+- insert `code`
+- create a block of `code` (not necessarily R `code`)
+- create a block of R `code`
+- etc
+- your ideas
+
+### Markdown new paragraph(s) 
+just<br/>use<br/>brslash`<br/>`<br/>but<br/>do<br/>not<br/>abuse<br/>
+or add 1 break in you text
+like this
+
+### Markdown link(s)
+Use the link name into brackets `[]` and the link path with parenthesis `()` to insert a link. <br/>
+For example, I have heard about an amazing [Lab](https://edb.cnrs.fr/) located in the fabulous [pink-town](https://www.toulouse.fr/) where [famous and exciting research](https://www.youtube.com/watch?v=MIYZlEuGTuY&ab_channel=Universit%C3%A9deToulouse) is being conducted.  
+
+### RMarkdown equations 
+Tough equations can be embeded in Rmarkdown using LaTexor MethML formats.
+Latex equations, $E = mc^{2}$
+
+You probably know that one too $\frac{1}{n} \sum_{i=1}^{n} x_{i}$
+To learn further about embeding equations you can have a look at Nicolas Tierney's book [RMarkdown for Scientists](https://rmd4sci.njtierney.com/captioning-and-referencing-equations.html)
+
+### RMarkdown insert inline code
+Using 1 back tick I can insert inline `code` in the text. <br/>
+We will see how that can be of great use within a scientific report (that updates itself as you update the analyses).
+
+### RMarkdown insert a block of code
+Using 3 back ticks to insert a block of `code` 
+```
+My block of code is great but notoriously useless
+```
+### RMarkdown insert a block of R code
+Using 3 back ticks to insert a block of `code` 
+```{r echo=FALSE}
+# this is not a block of R code it is just a notoriously useless comment
+print("That is great coding my friend")
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the message.
+
+### RMarkdown embed a plot
+You can easily embed plots, for example:
+
+My introduction about this super-relevent cutting-edge analyses I have conducted because they are of high interest to the community and are going to answer long-standing questions about cars biology.
+
+```{r qplot, fig.width=4, fig.height=3, message=FALSE, echo=FALSE, warning=FALSE}
+library(ggplot2)
+#summary(cars)
+qplot(speed,dist,data=cars)+
+  geom_smooth()+
+  theme_bw()
+ct<-cor.test(cars$speed,cars$dist)
+```
+
+From the result presented in the above-figure we can fairly conclude that the intra-orbital distance (distance between the drivers eyes) is causing the driver to drive faster (speed) The high correlation *R* = `r round(cor.test(cars$speed,cars$dist)$estimate,2)` is a highly significant (*p* = `r round(cor.test(cars$speed,cars$dist)$p.value,4)`) obvious evidence of causality. <br/>
+Note that both my *R* and *p* values come in R code embeded within the text. <br/>
+
+### Rmarkdown basic practice
+Using the R-dataset iris, plot the relationship between petal-length and petal-width with and a smoothed curve of their relationship. Write a two-lines introduction of the relevance of this research (in the language you feel more confortable with) and a 4-lines interpretation of your result. Use as much Rmarkdown tricks as you can, from those you just learn. (link, list, italic, embed code, pval, R values, )  
+
+
+```{r fig.width=4, fig.height=3, message=FALSE, echo=FALSE, warning=FALSE}
+library(ggplot2)
+#summary(iris)
+qplot(Petal.Length,Petal.Width,data=iris)+
+  geom_smooth()+
+  theme_bw()
+ct<-cor.test(iris$Petal.Length,iris$Petal.Width)
+```
+
+From the result presented in the above-figure we can fairly conclude that the ....... The high correlation *R* = `r round(cor.test(iris$Petal.Length,iris$Petal.Width)$estimate,2)` is a highly significant (*p* = `r round(cor.test(iris$Petal.Length,iris$Petal.Width)$p.value,4)`) obvious evidence of causality. <br/>
+Note that both my *R* and *p* values come in R code embeded within the text. <br/>
+
+### RMarkdown preview / publish your document
+This document is already a bit long. We are therefore going to publish it before we get tired of it. <br/>
+When you click the **Knit** button (topleft) a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
+The keyboard shortcut (Ctrl+Shift+K) will similarly render the document and display a preview of it. <br/>
+Here we asked for an html document at he beggining of this Rmarkdown document (cf line 5), you can open the html document in your web browser and admire the output.
+
+### Conclusion
+That was great!
+Lets add a horizontal line to signify that this is the end.
+
+___
+
+Lets move on to the next tutorial.
+
+
+

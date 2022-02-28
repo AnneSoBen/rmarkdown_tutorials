@@ -1,0 +1,136 @@
+---
+title: "Exercise RMrkdown and reproductibility course"
+author: "The EDB RMarkdown superstar learning team"
+date: "01/03/2022"
+output: 
+  html_document:
+    number_sections: true
+    toc: true
+    theme: united
+    highlight: tango
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+# Introduction
+
+This exercise is the best way to practice `RMarkdown` [@salinas2020r] now that you have had an overview of how it works. The principle is that you want to produce a copy of this `pdf` file. We provide most of the `R code`, because the scope is to work on the `RMarkdown` [@xie2018r] integration, not on the `R code`. 
+
+# Starters
+
+You want to create a new `Rmarkdown` file and save it in the `Exercise` folder.
+
+# Load packages
+
+What packages will I need? Well I can fill that in later anyway.
+
+BTW: To add a new code chunck the keyboard shortcut is `Ctrl` + `Alt` + `i`.
+Or use the insert button on the top left side of this window.
+```{r , echo=FALSE, include=FALSE}
+library(ggplot2)
+library(kableExtra)
+library(readxl)
+library(corrplot)
+```
+
+
+# Research compendium
+
+Let's organize our project. We create a folder called `data` and list the files in the current working folder.
+
+```{r, echo=TRUE, include=TRUE}
+system("mkdir -p data")
+list.files(path = ".")
+list.dirs(path = ".", full.names = TRUE, recursive = TRUE)
+```
+
+We can now move the `datasets.xls` file (main folder to the `Exercise/data` folder).
+
+# Load the project data
+
+We'll use the mtcars dataset that we"ll load from the `datasets.xls` file.
+He we do not provide the code because it is part of the exercise. 
+```{r, echo=FALSE, include=FALSE}
+my_mtcars <- as.data.frame(read_excel("data/datasets.xlsx",sheet = "mtcars"))
+```
+
+
+# Analyze the data
+
+## Get a look at the data
+```{r ,echo=TRUE, include=TRUE}
+#summary(my_mtcars)
+my_mtcars2 <- within(my_mtcars, {
+   vs <- factor(vs, labels = c("V", "S"))
+   am <- factor(am, labels = c("automatic", "manual"))
+   cyl  <- ordered(cyl)
+   gear <- ordered(gear)
+   carb <- ordered(carb)
+})
+summary(my_mtcars2)
+```
+
+## First analysis, fuel consumtion.
+
+I want to assess the motors consumption as a function of the displacement.
+Engine displacement is the measure of the cylinder volume swept by all of the pistons of a piston engine, excluding the combustion chambers.
+
+```{r mpg_disp, include=TRUE, fig.align='center', fig.width=5, fig.height=5}
+plot(mpg ~ disp, data = my_mtcars,xlab="Displacement (cu.in.)",ylab="Fuel consumption Miles/gallon", ylim=c(10,40))
+arrows(x0 = my_mtcars$disp, y0 = my_mtcars$mpg * 0.95, x1 = my_mtcars$disp, y1 = my_mtcars$mpg * 
+    1.05, angle = 90, code = 3, length = 0.04, lwd = 0.4, col="red")
+```
+
+Whoo, that was **interesting**. Can we concldude that biggers motors consume more fuel?
+
+Let's move on to the next analysis.
+
+## Second analysis, is that all?
+To assess whether other variables could also explain the consumption I will plot the correlation among each pair of variables in my data.
+```{r mtcorplot, fig.align='center', fig.width=8, fig.height=8}
+mcor <- cor(my_mtcars)
+corrplot(mcor)
+```
+Whoohoohooo, that plot looks great!
+
+It looks like the **number of cylinders** (cyl), **Gross horsepower** (hp) and the **Weight** (wt. 1000 lbs), could play a role too.
+
+If you are looking for the the variables meaning, you can find it [here](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)
+
+
+## Third analysis, we like camembert, they like pie!
+Lets produce a pie chart showing the proportion of cars that have different carb values.
+
+```{r ho_mae, fig.align='right', fig.width=8, fig.height=6, fig.cap="Figure 1: have you ever tried the camenbert pie"}
+#concat the names for the legend
+names = as.factor(paste(unique(my_mtcars$carb),"carbs"))
+#get the percentages
+percent=100*table(my_mtcars$carb)/length(my_mtcars$carb)
+pie(x=percent, label=paste(percent, "%"),  col=rainbow(length(names)), main="Percentage of cars per number of carburators" ) 
+#add legend
+legend("right",legend = names, fill = rainbow(length(names)), cex=0.8)
+```
+
+# Let's make sure that my figures have been saved!
+
+```{r}
+list.dirs(path = ".", full.names = TRUE, recursive = TRUE)
+list.files(path = "./Exercise_files/figure-html/")
+```
+
+# Print a nice table of....
+
+
+```{r}
+table(my_mtcars2$gear,my_mtcars2$carb)
+```
+
+
+
+# Bibliography
+
+
