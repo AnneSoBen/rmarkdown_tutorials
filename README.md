@@ -4,5 +4,15 @@ This repository (will) contains two tutorials and one exercise to learn Rmarkdow
 
 ## Instruction for attendees
 
+1. Download the zipped documents: 
+  - Click on "Code" (green button on the top left) and then "Download ZIP".
+  - Move the archive where you want to store the files.
+  - Uncompress the ZIP file on your computer.
+
+2. Open RStudio, then open the file _RMarkdown_tutorial_1.Rmd_: we will go through the file together.
+
+3. Once we have read the first tutorial, open the file _RMarkdown_tutorial_2.Rmd_: this files shows more features of RMarkdown, we will look over them together.
+
+4. Now you know (almost) everything about RMarkdown, open the file _RMarkdown_exercise.pdf_ (with a PDF reader) and try to reproduce it on your own!
 
 
