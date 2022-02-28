@@ -2,7 +2,7 @@
 
 This repository (will) contains two tutorials and one exercise to learn Rmarkdown. They were created by Anne-Sophie Benoiston and Jordi Salmona (Laboratory Evolution et Diversité Biologique, Université de Toulouse) for a course intended for students and staff from the lab.
 
-## Instruction for attendees
+## Instructions for attendees
 
 1. Download the zipped documents: 
   - Click on "Code" (green button on the top left) and then "Download ZIP".
