@@ -10,7 +10,7 @@ output:
     highlight: tango
 bibliography: bibliography.bib
 ---
-
+  
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = ".")
@@ -91,9 +91,9 @@ If you have time-consuming chunks, you will be interested in **caching** them! C
 ```{r cache example, fig.width=3, fig.height=3, cache=TRUE}
 # this code chunk will be evaluated only once, unless you modify the code chunk
 ggplot(data = pressure, aes(x = temperature, y = pressure)) +
-  geom_point(color = "pink") +
-  labs(x = "Temperature (°C)", y = "Pressure (mm)") +
-  theme_bw()
+geom_point(color = "pink") +
+labs(x = "Temperature (°C)", y = "Pressure (mm)") +
+theme_bw()
 ```
 
 The code chunk options were : "r cache example, fig.width=3, fig.height=3, cache=TRUE"
@@ -112,8 +112,8 @@ kable(head(pressure))
 This is a basic HTML output of `kable()`, which is a bit ugly! Let's see how to improve that.
 
 The `kableExtra` syntax may be a bit different from what you are used to with R. It uses the pipe-like operator `%>%` from the `magrittr` package (you can have a look at this package [here](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)). Thus, the following code is equivalent to the previous one:
-
-```{r pressure5}
+  
+  ```{r pressure5}
 head(pressure) %>%
   kable()
 ```
@@ -122,18 +122,18 @@ In order to produce nicer tables, various themes are available in the `kableExtr
 
 ```{r pressure6}
 mytable = head(pressure) %>%
-  kable(align = "cc")
+kable(align = "cc")
 
 mytable %>%
-  kable_styling(full_width = FALSE)
+kable_styling(full_width = FALSE)
 
 mytable %>%
-  kable_classic(full_width = FALSE, "hover", html_font = "Trebuchet MS", position = "left")
+kable_classic(full_width = FALSE, "hover", html_font = "Trebuchet MS", position = "left")
 
 # you can even produce very ugly tables like this one:
 mytable %>%
-  kable_material_dark(font_size = 14, "striped") %>%
-  row_spec(3:4, bold = T, color = "blue", background = "#D7261E")
+kable_material_dark(font_size = 14, "striped") %>%
+row_spec(3:4, bold = T, color = "blue", background = "#D7261E")
 ```
 
 Description of the options :
@@ -170,11 +170,11 @@ The global look of your Rmarkdown output document can be customized with the hea
 
 - the fields `title`, `author` and `date` speak for themselves
 - `output`: here you specify the type of output document, here it is a **HTML** document, but you can choose to produce **PDF**, **Word**, **ODT**, **RTF** or **Markdown** documents. Sub-options can be added to customize the document, such as:
-    - `number_sections`: numbers the sections
-    - `toc`: adds a table of contents
-    - `theme`: specifies the Bootstrap theme to use for the page (have a look at [this page](https://bootswatch.com/3/) for other styles)
-    - `highlight`: specifies the syntax highlighting style
-    
+- `number_sections`: numbers the sections
+- `toc`: adds a table of contents
+- `theme`: specifies the Bootstrap theme to use for the page (have a look at [this page](https://bootswatch.com/3/) for other styles)
+- `highlight`: specifies the syntax highlighting style
+
 For more information about header options, go visit [this page](https://bookdown.org/yihui/rmarkdown/documents.html)!
 
 <!-- By default, the working directory for R code chunks is the directory that contains the Rmd document. -->
@@ -185,11 +185,11 @@ When writing reports including analyses with Rmarkdown, or even your article man
 
 ```{r references, eval=FALSE}
 @book{talo1978,
-  title = "1001 cocktails",
-  author = "Talo, Armand",
-  publisher = "Laurent Gina Editions",
-  year = "1978"
- }
+title = "1001 cocktails",
+author = "Talo, Armand",
+publisher = "Laurent Gina Editions",
+year = "1978"
+}
 ```
 
 You have downloaded this file, and the option `bibliography: bibliography.bib` was added in the header so this reference is printed in the last section of your Rmarkdown output document when you cite it [@talo1978] or [@tangney2019].
