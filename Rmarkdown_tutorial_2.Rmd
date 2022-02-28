@@ -22,7 +22,7 @@ Before going into the details of Rmarkdown, look at the _r setup_ chunk. We adde
 
 - `knitr::opts_chunk$set(echo = TRUE)`: sets the value of the code chunk option `echo` to `TRUE` for all chunks, unless the user decides not to print the code chunk with `echo=FALSE`
 
-- `knitr::opts_knit$set(root.dir = ".")`: sets the working directory. By default, the working directory for R code chunks is the directory that contains the Rmd document, so basically `knitr::opts_knit$set(root.dir = ".")` does nothing here. But it might be interesting for you to set another working directory depending on your files organization. We recommend **ALWAYS** set the working directory relatively to your `.Rmd` file! Thus, if you share your research compendium with someone else, this someone will be able to knit your `.Rmd` file without changing anlything!
+- `knitr::opts_knit$set(root.dir = ".")`: sets the working directory. By default, the working directory for R code chunks is the directory that contains the Rmd document, so basically `knitr::opts_knit$set(root.dir = ".")` does nothing here. But it might be interesting for you to set another working directory depending on your files organization. We recommend **ALWAYS** set the working directory relatively to your `.Rmd` file! Thus, if you share your research compendium with someone else, this someone will be able to knit your `.Rmd` file without changing anything!
 
 # Call libraries
 
@@ -41,12 +41,12 @@ Your [Rmarkdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/03/
 plot(pressure, xlab="Temperature", ylab="Pressure",type="l")
 ```
 
-The code chunck options were : "r pressure1, echo=FALSE" <br/>
+The code chunk options were : "r pressure1, echo=FALSE" <br/>
 Here we have three elements: 
 
 1. "r" and space (you can call other code language if necessary)
 2. "chunk-name" and coma, give it the name you want, do not duplicate names otherwise Rmarkdown will print you an error message when building your document
-3. the `echo = FALSE` parameter prevent printing of the R code that generated the plot.
+3. the `echo = FALSE` parameter prevents the printing of the R code that generated the plot.
 
 ## Plotting code-chunk options
 
@@ -55,34 +55,34 @@ In the next example we added a few plotting options:
 plot(pressure, xlab="Temperature", ylab="Pressure",type="l",col="red")
 ```
 
-The code chunck options were : "r pressure2, echo=TRUE, fig.align='center', fig.width=4, fig.height=3, fig.cap="Figure 2: my nicest plot ever", fig.path="figures""
+The code chunk options were : "r pressure2, echo=TRUE, fig.align='center', fig.width=4, fig.height=3, fig.cap="Figure 2: my nicest plot ever", fig.path="figures""
 
 Here we have 7 elements: 
 
-3. the `echo = TRUE` parameter now prints of the R code that generated the plot.
+3. the `echo = TRUE` parameter now prints the R code that generated the plot.
 4. the `fig.align='center'` is self-explanatory
-5. the `fig.width=4`,  is self-explanatory
-6. `fig.height=3`,  is self-explanatory
+5. the `fig.width=4`, is self-explanatory
+6. `fig.height=3`, is self-explanatory
 7. `fig.cap="Figure 2: my nicest plot ever"`, inserts a figure caption (a figure title)
 
 Note, the figures are saved at the .png format, and at the requested size, in "./my_rmd_script.rmd/figure-html/"
 
 ## Verbose code-chunk options
 
-Here I included an error in the script on purpose, lets see how it goes
+Here I included an error in the script on purpose, lets see how it goes:
 ```{r pressure3, echo=TRUE, error=TRUE, include=TRUE, warning=TRUE}
 #The following function is supposed to create a warning message
 cor( c( 1 , 1 ), c( 2 , 3 ) )
 plot(pressur, xlab="Temperature", ylab="Pressure",type="l",col="red")
 ```
 
-The code chunck options were : "r pressure3, echo=TRUE, error=TRUE, include=TRUE, warning=TRUE"
+The code chunk options were : "r pressure3, echo=TRUE, error=TRUE, include=TRUE, warning=TRUE"
 Here we have 6 elements: 
 
-3. the `echo = TRUE` parameter now prints-of the R code that generated the plot.
+3. the `echo = TRUE` parameter now prints off the R code that generated the plot.
 4. the `error = TRUE` parameter now **prints error instead of killing the production of your output document** 
-5. the `include = TRUE` parameter now prints of the code = redundant with echo
-6. the `warning = TRUE` prints the warning messages, in this case the ggplot2 version warning
+5. the `include = TRUE` parameter now prints off the code = redundant with echo
+6. the `warning = TRUE` prints the warning messages
 
 ## Cache
 
@@ -96,10 +96,10 @@ ggplot(data = pressure, aes(x = temperature, y = pressure)) +
   theme_bw()
 ```
 
-The code chunck options were : "r cache example, fig.width=3, fig.height=3, cache=TRUE"
-Here we have 6 elements: 
+The code chunk options were : "r cache example, fig.width=3, fig.height=3, cache=TRUE"
+Here we have 5 elements: 
 
-5. the `cache=TRUE` parameter now **caches the result of this code chunks** 
+5. the `cache=TRUE` parameter now **caches the result of this code chunk** 
 
 # Tables with kableExtra
 
@@ -149,12 +149,12 @@ Description of the options :
 
 Many other options and functions make it easy to customize your tables, have a look at their [tutorial](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html) (you might need it for the last exercise!).
 
-# Working with excel files
+# Working with Excel files
 
-This is a parenthesis, not directly related to RMarkdown, but related to reproductibility. In many projects, your supervisor will feed you with an excel table. You can read directly this table into R, without saving it in CSV, therefore avoiding a manual unrecorded unreproducible step. That can be done with the packake `readxl` (or with googlesheet4, for googlesheets). 
+This is a parenthesis, not directly related to RMarkdown, but related to reproductibility. In many projects, your supervisor will feed you with an Excel table. You can read directly this table into R, without saving it in CSV, therefore avoiding a manual unrecorded unreproducible step. That can be done with the packake `readxl` (or with googlesheet4, for googlesheets). 
 
 ```{r iris_xls, echo=FALSE, error=FALSE, warning=FALSE, fig.width=7, fig.height=7}
-my_iris <- as.data.frame(read_excel("data/datasets.xlsx",sheet = "iris"))
+my_iris <- as.data.frame(read_excel("data/datasets.xlsx", sheet = "iris"))
 my_iris$Species<-as.factor(my_iris$Species)
 summary(my_iris)
 pairs(my_iris[1:4], main = "Edgar Anderson's Iris Data", pch = 21, bg = c("red", "green3", "blue")[unclass(my_iris$Species)])
