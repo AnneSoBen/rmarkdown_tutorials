@@ -13,6 +13,6 @@ This repository (will) contains two tutorials and one exercise to learn Rmarkdow
 
 3. Once we have read the first tutorial, open the file _RMarkdown_tutorial_2.Rmd_: this files shows more features of RMarkdown, we will look over them together.
 
-4. Now you know (almost) everything about RMarkdown, open the file _RMarkdown_exercise.pdf_ (with a PDF reader) and try to reproduce it on your own!
+4. Now you know (almost) everything about RMarkdown, open the file _Exercise/Exercise.pdf_ (with a PDF reader) and try to reproduce it on your own!
 
 
