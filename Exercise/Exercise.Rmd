@@ -169,6 +169,7 @@ Limit the width to 200px and center the picture!
 knitr::include_graphics("data/kitten-wallpaper-android.jpeg")
 # this is another way to include external images with knitr - it allows you to use 
 # the code chunk parameters to place/resize/etc the image
+# source of the image: https://fr.phoneky.com/android/?id=d1d50935#gsc.tab=0
 ```
 
 
