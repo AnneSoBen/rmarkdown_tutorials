@@ -113,7 +113,7 @@ This is a basic HTML output of `kable()`, which is a bit ugly! Let's see how to 
 
 The `kableExtra` syntax may be a bit different from what you are used to with R. It uses the pipe-like operator `%>%` from the `magrittr` package (you can have a look at this package [here](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)). Thus, the following code is equivalent to the previous one:
   
-  ```{r pressure5}
+```{r pressure5}
 head(pressure) %>%
   kable()
 ```
