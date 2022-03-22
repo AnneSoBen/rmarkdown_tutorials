@@ -104,19 +104,6 @@ Note that both my *R* and *p* values come in R code embeded within the text. <br
 ### Rmarkdown basic practice
 Using the R-dataset iris, plot the relationship between petal-length and petal-width with and a smoothed curve of their relationship. Write a two-lines introduction of the relevance of this research (in the language you feel more confortable with) and a 4-lines interpretation of your result. Use as much Rmarkdown tricks as you can, from those you just learn. (link, list, italic, embed code, pval, R values, )  
 
-
-```{r fig.width=4, fig.height=3, message=FALSE, echo=FALSE, warning=FALSE}
-library(ggplot2)
-#summary(iris)
-qplot(Petal.Length,Petal.Width,data=iris)+
-  geom_smooth()+
-  theme_bw()
-ct<-cor.test(iris$Petal.Length,iris$Petal.Width)
-```
-
-From the result presented in the above-figure we can fairly conclude that the ....... The high correlation *R* = `r round(cor.test(iris$Petal.Length,iris$Petal.Width)$estimate,2)` is a highly significant (*p* = `r round(cor.test(iris$Petal.Length,iris$Petal.Width)$p.value,4)`) obvious evidence of causality. <br/>
-Note that both my *R* and *p* values come in R code embeded within the text. <br/>
-
 ### RMarkdown preview / publish your document
 This document is already a bit long. We are therefore going to publish it before we get tired of it. <br/>
 When you click the **Knit** button (topleft) a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
