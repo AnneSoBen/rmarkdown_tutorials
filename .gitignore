@@ -1,7 +1,6 @@
-Rmarkdown_tutorial_2_cache/
-Rmarkdown_tutorial_2_files/
+Tutorials/Rmarkdown_tutorial_2_cache/
+Tutorials/Rmarkdown_tutorial_2_files/
 Exercise/data/
-Exercise/Exercise_files/
-Exercise/Exercise.log
-#Exercise/Exercise.md
-#Exercise/Exercise.Rmd
+Exercise/analysis/Exercise.Rmd
+Exercise/analysis/Exercise.md
+Exercise/analysis/Exercise_files/

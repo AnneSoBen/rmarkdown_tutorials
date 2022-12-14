@@ -33,7 +33,7 @@ library(readxl)
 ```
 
 # Code-chunk options
-Your [Rmarkdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf?_ga=2.102565186.2124518106.1645700734-42729368.1573809399) will be your best friend to fine tune the choice of these parameters.
+Your [Rmarkdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf?_ga=2.102565186.2124518106.1645700734-42729368.1573809399) and [Rmarkdown reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) will be your best friends to fine tune the choice of these parameters.
 
 ## Few code-chunk options
 
@@ -65,7 +65,7 @@ Here we have 7 elements:
 6. `fig.height=3`, is self-explanatory
 7. `fig.cap="Figure 2: my nicest plot ever"`, inserts a figure caption (a figure title)
 
-Note, the figures are saved at the .png format, and at the requested size, in "./my_rmd_script.rmd/figure-html/"
+Note that the figures are saved at the .png format, and at the requested size, in "./Rmarkdown_tutorial_2_files/figure-html/"
 
 ## Verbose code-chunk options
 
@@ -81,7 +81,7 @@ Here we have 6 elements:
 
 3. the `echo = TRUE` parameter now prints off the R code that generated the plot.
 4. the `error = TRUE` parameter now **prints error instead of killing the production of your output document** 
-5. the `include = TRUE` parameter now prints off the code = redundant with echo
+5. the `include = TRUE` parameter now prints off the code = redundant with echo (`include = TRUE` runs the chunk but does not include the chunk in the final document - this is equivalent to `eval=TRUE, echo=FALSE`)
 6. the `warning = TRUE` prints the warning messages
 
 ## Cache
@@ -99,7 +99,9 @@ theme_bw()
 The code chunk options were : "r cache example, fig.width=3, fig.height=3, cache=TRUE"
 Here we have 5 elements: 
 
-5. the `cache=TRUE` parameter now **caches the result of this code chunk** 
+5. the `cache=TRUE` parameter now **caches the result of this code chunk**
+
+The files used to cache the chunk are saved in "./Rmarkdown_tutorial_2_cache/html".
 
 # Tables with kableExtra
 
@@ -153,7 +155,7 @@ Many other options and functions make it easy to customize your tables, have a l
 
 This is a parenthesis, not directly related to RMarkdown, but related to reproductibility. In many projects, your supervisor will feed you with an Excel table. You can read directly this table into R, without saving it in CSV, therefore avoiding a manual unrecorded unreproducible step. That can be done with the packake `readxl` (or with googlesheet4, for googlesheets). 
 
-```{r iris_xls, echo=FALSE, error=FALSE, warning=FALSE, fig.width=7, fig.height=7}
+```{r iris_xls, error=FALSE, warning=FALSE, fig.width=7, fig.height=7}
 my_iris <- as.data.frame(read_excel("data/datasets.xlsx", sheet = "iris"))
 my_iris$Species<-as.factor(my_iris$Species)
 summary(my_iris)
