@@ -9,10 +9,10 @@ This repository contains two tutorials and one exercise to learn Rmarkdown. They
   - Move the archive where you want to store the files.
   - Uncompress the ZIP file on your computer.
 
-2. Open RStudio, then open the file _RMarkdown_tutorial_1.Rmd_: we will go through the file together.
+2. Open RStudio, then open the file _Tutorials/RMarkdown_tutorial_1.Rmd_: we will go through the file together.
 
-3. Once we have read the first tutorial, open the file _RMarkdown_tutorial_2.Rmd_: this file shows more features of RMarkdown, we will look over them together.
+3. Once we have read the first tutorial, open the file _Tutorials/RMarkdown_tutorial_2.Rmd_: this file shows more features of RMarkdown, we will look over them together.
 
-4. Now you know (almost) everything about RMarkdown, open the file _Exercise/Exercise.pdf_ (with a PDF reader) and try to reproduce it on your own!
+4. Now you know (almost) everything about RMarkdown, open the file _Exercise/analysis/Exercise.pdf_ (with a PDF reader) and try to reproduce it on your own!
 
 
